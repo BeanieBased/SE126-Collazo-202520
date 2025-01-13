@@ -13,8 +13,9 @@
 
 maxCap = 0
 people = 0
-response = ""
+response = "y"
 answer = ""
+name = ""
 
 #Function
 
@@ -23,15 +24,16 @@ def difference(people, maxCap):
     seatsRemaining = maxCap - people
     if seatsRemaining >= 1:
         {
-            print(f"There are {seatsRemaining} seats remaining.")
+            print(f"\n{seatsRemaining} people can be added to the meeting and still meet fire regulations")
         }
     elif seatsRemaining < 0:
+        seatsRemaining = seatsRemaining * -1
         {
-            print(f"There are more than the allowed amount of people inside the room. You need to remove {seatsRemaining} people to meet fire regulations.")
+            print(f"\n{seatsRemaining} people must be removed from the meeting to meet fire regulations.")
         }
     else:
         {
-            print("Perfect! The room is completely full. No spots left.")
+            print("\nPerfect! The room is completely full. No spots left.")
         }
     return difference
 
@@ -41,19 +43,21 @@ def decision(response):
     #while loop trap - ensure user provides valid value before moving on
     while response != "y" and response != "n":
         print("***INVALID ENTRY!***")
-
+        response = input("\nWould you like to check another room? [y/n]: ").lower
     return response
 
 #Main Code
+while response == "y": 
+    name = input("\nWhat is the name of your meeting? ")
 
-maxCap = int(input("What is the max capacity of the room? "))
+    maxCap = int(input("\nWhat is the max capacity of the room? "))
 
-people = int(input("How many people are going in? "))
+    people = int(input("\nHow many people are going in? "))
 
-print(difference(people, maxCap))
+    print(difference(people, maxCap))
 
-response = input("\t\tWould you like to check another room? [y/n]: ").lower()
+    response = input("\nWould you like to check another room? [y/n]: ").lower()
 
-answer = (decision)
-
-
+    answer = (decision(response))
+else:
+    print("\n\nThank you for using my program!")
