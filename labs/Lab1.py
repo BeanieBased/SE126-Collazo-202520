@@ -14,7 +14,7 @@
 maxCap = 0
 people = 0
 response = "y"
-answer = ""
+answer = "y"
 name = ""
 
 #Function
@@ -22,6 +22,28 @@ name = ""
 def difference(people, maxCap):
     
     seatsRemaining = maxCap - people
+
+    return seatsRemaining
+
+def decision(response):
+    '''this function asks a user if they'd like to continue the program, checks the response for validity, and then returns a valid response back to the main program.'''
+
+    #while loop trap - ensure user provides valid value before moving on
+    while response != "y" and response != "n":
+        print("***INVALID ENTRY!***")
+        response = input("\nWould you like to check another room? [y/n]: ").lower()
+    return response
+
+#Main Code
+while answer == "y": 
+    name = input("\nWhat is the name of your meeting? ")
+
+    maxCap = int(input("\nWhat is the max capacity of the room? "))
+
+    people = int(input("\nHow many people are going in? "))
+
+    seatsRemaining = (difference(people, maxCap))
+
     if seatsRemaining >= 1:
         {
             print(f"\n{seatsRemaining} people can be added to the meeting and still meet fire regulations")
@@ -35,29 +57,9 @@ def difference(people, maxCap):
         {
             print("\nPerfect! The room is completely full. No spots left.")
         }
-    return difference
 
-def decision(response):
-    '''this function asks a user if they'd like to continue the program, checks the response for validity, and then returns a valid response back to the main program.'''
+    resp = input("\nWould you like to check another room? [y/n]: ").lower()
 
-    #while loop trap - ensure user provides valid value before moving on
-    while response != "y" and response != "n":
-        print("***INVALID ENTRY!***")
-        response = input("\nWould you like to check another room? [y/n]: ").lower
-    return response
-
-#Main Code
-while response == "y": 
-    name = input("\nWhat is the name of your meeting? ")
-
-    maxCap = int(input("\nWhat is the max capacity of the room? "))
-
-    people = int(input("\nHow many people are going in? "))
-
-    print(difference(people, maxCap))
-
-    response = input("\nWould you like to check another room? [y/n]: ").lower()
-
-    answer = (decision(response))
+    answer = (decision(resp))
 else:
     print("\n\nThank you for using my program!")
