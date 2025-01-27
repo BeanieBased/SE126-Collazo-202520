@@ -55,12 +55,12 @@ with open("textFiles/voters_202040.csv") as csvfile:
         voted.append(rec[3])
         
 for i in range(0, len(voterID)):
-    if age[i] < 18:
+    if age[i] < 18: #check age if they can vote
         notEligible = countUP(notEligible)
-    elif registered[i] == 'N':
+    elif registered[i] == 'N': #are they registered
         notRegistered = countUP(notRegistered)
     elif registered[i] == 'Y':
-        if voted[i] == 'Y':
+        if voted[i] == 'Y': #did they vote
             eligibleVoters = countUP(eligibleVoters)
         else:
             eligibleNonVoters = countUP(eligibleNonVoters)
