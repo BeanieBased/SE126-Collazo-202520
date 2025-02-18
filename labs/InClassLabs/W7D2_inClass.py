@@ -130,3 +130,19 @@ while ans == "y":
 
 print("\nThank you for using my program.\n\t\tGOODBYE!\n")
 
+
+#this will be a 2d list to hold all of the file data
+dataFile = []
+print("hello")
+with open("textFiles\simple.csv") as csvfile:
+    file = csv.reader(csvfile)
+    for rec in file:
+        print("hi")
+        dataFile.append(rec)
+
+print("\n\nDATA FILE (2D LIST[][]):")
+for i in range(0, len(dataFile)):
+    print(f"INDEX {i} of 'DataFile': {dataFile[i]}")
+    for j in range(0, len(dataFile[i])):
+        #accessing each value within the list currently looked at from outter for loop
+        print(f"INDEX {i} and value DataFile[{j}]: {dataFile[i][j]}")
