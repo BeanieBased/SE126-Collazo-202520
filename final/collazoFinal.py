@@ -22,16 +22,42 @@ whichBoard = (random.randint(1, 5))
 
 with open("textFiles/battleship.csv") as csvfile:
     file = csv.reader(csvfile)
-    
-    if whichBoard == 1:
-        print("Board 1 was Picked.")
 
-    elif whichBoard == 2:
-        print("Board 2 was Picked.")
-    elif whichBoard == 3:
-        print("Board 3 was Picked.")
-    elif whichBoard == 4:
-        print("Board 4 was Picked.")
-    else:
-        print("Board 5 was Picked.")
+    boards = []  #List storing all the boards
+    current_board = [] #Opponents selected board
 
+    for rec in file:
+        if rec:  #If the line isn't empty, add it to the current board.
+            current_board.append(rec)
+        else:  #Empty line means new board
+            if current_board:
+                boards.append(current_board)
+                current_board = []
+
+    if current_board:  #Add the last board if there's no blank line after
+        boards.append(current_board)
+
+#Selecting a board
+if whichBoard == 1:
+    print("Board 1 was Picked.")
+    selected_board = boards[0]
+
+elif whichBoard == 2:
+    print("Board 2 was Picked.")
+    selected_board = boards[1]
+
+elif whichBoard == 3:
+    print("Board 3 was Picked.")
+    selected_board = boards[2]
+
+elif whichBoard == 4:
+    print("Board 4 was Picked.")
+    selected_board = boards[3]
+
+else:
+    print("Board 5 was Picked.")
+    selected_board = boards[4]
+
+# Print the board (testing)
+for row in selected_board:
+    print(row)
