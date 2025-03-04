@@ -52,14 +52,3 @@ else:
 
 #BINARY SEARCH for LIBRARY NUMBER (dictionary keys)
 #in order to binary search a set of keys you must FIRST ...
-
-
-min = 0
-max = len(libraryNums) -1
-mid = int((min + max) / 2)
-
-while min < max and search != libraryNums[mid]:
-    if search < libraryNums[mid]:
-        max = mid - 1
-    else:
-        
