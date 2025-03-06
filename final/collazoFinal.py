@@ -39,23 +39,23 @@ with open("textFiles/battleship.csv") as csvfile:
 
 #Selecting a board
 if whichBoard == 1:
-    print("Board 1 was Picked.")
+    print("Board 1 was Picked.") #testing
     selected_board = boards[0]
 
 elif whichBoard == 2:
-    print("Board 2 was Picked.")
+    print("Board 2 was Picked.") #testing
     selected_board = boards[1]
 
 elif whichBoard == 3:
-    print("Board 3 was Picked.")
+    print("Board 3 was Picked.") #testing
     selected_board = boards[2]
 
 elif whichBoard == 4:
-    print("Board 4 was Picked.")
+    print("Board 4 was Picked.") #testing
     selected_board = boards[3]
 
 else:
-    print("Board 5 was Picked.")
+    print("Board 5 was Picked.") #testing
     selected_board = boards[4]
 
 # Print the board (testing)
