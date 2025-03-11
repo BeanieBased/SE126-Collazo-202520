@@ -4,7 +4,7 @@
 #3-3-2025 [W9D1]
 
 
-#Program Description: It's battleship.
+#Program Description: It's battleship, but very simplified. Guess where the opponent's ships are. If you sink all the ships, you win.
 
 #--Imports------------
 
@@ -17,6 +17,12 @@ whichBoard = (random.randint(1, 5))
 
 #--Functions-------
 
+def printGuess():
+    #Print the guessBoard after each move
+    for rec in guessBoard:
+        for cell in rec:
+            print(cell, end=" ")
+        print()  #Move to the next line after printing a row
 
 #--Main Code----- 
 
@@ -58,7 +64,7 @@ else:
     #print("Board 5 was Picked.") #testing
     selectedBoard = boards[4]
 
-guessBoard = [['~'] * len(selectedBoard[0]) for _ in range(len(selectedBoard))]
+guessBoard = [['~'] * len(selectedBoard[0]) for _ in range(len(selectedBoard))] #makes the board displayed a bunch of "~", for the length of the selected board so it's the same size
 
 # Count the total ships (X) on the selected board
 totalShips = sum(row.count('X') for row in selectedBoard) #turn this into a sorting method
@@ -75,7 +81,7 @@ hits = 0
 
 #Actual Game
 while hits < totalShips:
-    row, col = map(int, input("Enter row and column [example: 1 6]: ").split())
+    row, col = map(int, input("Enter row and column [example: 1 6]: ").split()) #row, col sets the variables to row and col from the input when there is a space between, and map 
     
     if selectedBoard[row][col] == 'X':
         print("Hit!")
@@ -85,10 +91,6 @@ while hits < totalShips:
         print("Miss!")
         guessBoard[row][col] = 'O'
     
-    #Print the guessBoard after each move
-    for rec in guessBoard:
-        for cell in rec:
-            print(cell, end=" ")
-        print()  #Move to the next line after printing a row
+    printGuess()
 
 print("You sank all the ships! You win!")
