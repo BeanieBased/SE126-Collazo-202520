@@ -39,25 +39,55 @@ with open("textFiles/battleship.csv") as csvfile:
 
 #Selecting a board
 if whichBoard == 1:
-    print("Board 1 was Picked.") #testing
-    selected_board = boards[0]
+    #print("Board 1 was Picked.") #testing
+    selectedBoard = boards[0]
 
 elif whichBoard == 2:
-    print("Board 2 was Picked.") #testing
-    selected_board = boards[1]
+    #print("Board 2 was Picked.") #testing
+    selectedBoard = boards[1]
 
 elif whichBoard == 3:
-    print("Board 3 was Picked.") #testing
-    selected_board = boards[2]
+    #print("Board 3 was Picked.") #testing
+    selectedBoard = boards[2]
 
 elif whichBoard == 4:
-    print("Board 4 was Picked.") #testing
-    selected_board = boards[3]
+    #print("Board 4 was Picked.") #testing
+    selectedBoard = boards[3]
 
 else:
-    print("Board 5 was Picked.") #testing
-    selected_board = boards[4]
+    #print("Board 5 was Picked.") #testing
+    selectedBoard = boards[4]
 
-# Print the board (testing)
-for row in selected_board:
-    print(row)
+guessBoard = [['~'] * len(selectedBoard[0]) for _ in range(len(selectedBoard))]
+
+# Count the total ships (X) on the selected board
+total_ships = sum(row.count('X') for row in selectedBoard)
+
+# Initialize hit counter
+hits = 0
+
+#Print the board (testing)
+#for rec in selectedBoard:
+#    for cell in rec:
+#        print(cell, end=" ")  # print the rows with no brackets
+#    print()  # Move to the next line after printing a row
+
+#Actual Game
+while hits < total_ships:
+    row, col = map(int, input("Enter row and column [example: 1 6]: ").split())
+    
+    if selectedBoard[row][col] == 'X':
+        print("Hit!")
+        guessBoard[row][col] = 'X'
+        hits += 1
+    else:
+        print("Miss!")
+        guessBoard[row][col] = 'O'
+    
+    #Print the guessBoard after each move
+    for rec in guessBoard:
+        for cell in rec:
+            print(cell, end=" ")
+        print()  #Move to the next line after printing a row
+
+print("You sank all the ships! You win!")
