@@ -18,7 +18,7 @@ whichBoard = (random.randint(1, 5))
 #--Functions-------
 
 
-#--Main Code-----
+#--Main Code----- 
 
 with open("textFiles/battleship.csv") as csvfile:
     file = csv.reader(csvfile)
@@ -61,7 +61,8 @@ else:
 guessBoard = [['~'] * len(selectedBoard[0]) for _ in range(len(selectedBoard))]
 
 # Count the total ships (X) on the selected board
-total_ships = sum(row.count('X') for row in selectedBoard)
+totalShips = sum(row.count('X') for row in selectedBoard) #turn this into a sorting method
+
 
 # Initialize hit counter
 hits = 0
@@ -73,7 +74,7 @@ hits = 0
 #    print()  # Move to the next line after printing a row
 
 #Actual Game
-while hits < total_ships:
+while hits < totalShips:
     row, col = map(int, input("Enter row and column [example: 1 6]: ").split())
     
     if selectedBoard[row][col] == 'X':
